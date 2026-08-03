@@ -31,7 +31,8 @@ Automated SOC Alerting: Engineered an Amazon SNS (Simple Notification Service) t
 Proof of Configuration:
 
 
-Fig 1: S3 bucket deployed with Block Public Access successfully enforced.
+Fig 1:![Alt text](image/s3-baseline-private.png)
+ S3 bucket deployed with Block Public Access successfully enforced. 
 
-
-Fig 2: SNS Topic subscription confirmed for real-time SOC email alerting.
+Fig 2: ![Alt text](image/sns-subscription-confirmed.png)
+SNS Topic subscription confirmed for real-time SOC email alerting.
