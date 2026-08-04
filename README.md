@@ -105,6 +105,6 @@ def lambda_handler(event, context):
 
 Proof of Configuration:
 
-Fig 3: IAM Role policy showing least-privilege configuration.
+Fig 3: ![IAM Role policy showing least-privilege configuration.](images/iam-role-permissions.png)
 
-Fig 4: Lambda function deployed with environment variables configured.
+Fig 4: ![Lambda function deployed with environment variables configured.](images/lambda-config.png)
