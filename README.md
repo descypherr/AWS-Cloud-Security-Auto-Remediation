@@ -113,11 +113,23 @@ Fig 4: ![Lambda function deployed with environment variables configured.](images
 
 Objective: Establish continuous security audit logging and real-time event routing to detect unauthorized compliance drifts.
 
-AWS CloudTrail Audit Logging: Deployed a multi-region trail (S3-Security-Audit-Trail) to capture management and data API calls made across the AWS account. This provides the tamper-evident audit log required for threat detection.
+AWS CloudTrail Audit Logging: Deployed a multi-region trail (S3-Security-Audit-Trail) to capture management and data API calls made across the AWS account. Key features configured include:
 
-Amazon EventBridge Rule: Configured an EventBridge rule (S3-Public-Access-Tripwire) using a custom JSON Event Pattern. The rule monitors CloudTrail events specifically for public bucket modifications (PutBucketPublicAccessBlock, DeletePublicAccessBlock, PutBucketAcl, and PutBucketPolicy) and routes matching events directly to the remediation Lambda function.
+Multi-region trail logging to capture unauthorized API activity globally.
 
-Event Pattern JSON:
+Dedicated, encrypted S3 bucket storage for tamper-evident audit logging required for threat detection.
+
+Amazon EventBridge Rule: Configured an EventBridge tripwire rule (S3-Public-Access-Tripwire) using a custom JSON Event Pattern. The rule monitors CloudTrail events specifically for public bucket modifications and routes matching events directly to the remediation Lambda function. Intercepted API actions include:
+
+PutBucketPublicAccessBlock
+
+DeletePublicAccessBlock
+
+PutBucketAcl
+
+PutBucketPolicy
+
+EventBridge Rule Event Pattern (event_pattern.json):
 
 {
   "source": ["aws.s3"],
@@ -132,7 +144,6 @@ Event Pattern JSON:
     ]
   }
 }
-
 
 
 Proof of Configuration:
