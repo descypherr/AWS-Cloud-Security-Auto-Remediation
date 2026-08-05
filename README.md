@@ -146,6 +146,6 @@ Fig 4: ![Lambda function deployed with environment variables configured.](images
 
 ### Proof of Configuration:
 
-Fig 5: ![CloudTrail multi-region audit logging active](images/cloudtrail-active.png.jpeg)
+Fig 5: ![CloudTrail multi-region audit logging active](imagescloudtrail-active.png)
 
 Fig 6: ![EventBridge rule enabled with JSON pattern target](images/eventbridge-rule-config.png)
