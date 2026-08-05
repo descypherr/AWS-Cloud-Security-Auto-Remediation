@@ -108,3 +108,35 @@ Proof of Configuration:
 Fig 3: ![IAM Role policy showing least-privilege configuration.](images/iam-role-permissions.png)
 
 Fig 4: ![Lambda function deployed with environment variables configured.](images/lambda-config.png)
+
+🕵️‍♂️ Phase 3: The Trigger (CloudTrail & EventBridge)
+
+Objective: Establish continuous security audit logging and real-time event routing to detect unauthorized compliance drifts.
+
+AWS CloudTrail Audit Logging: Deployed a multi-region trail (S3-Security-Audit-Trail) to capture management and data API calls made across the AWS account. This provides the tamper-evident audit log required for threat detection.
+
+Amazon EventBridge Rule: Configured an EventBridge rule (S3-Public-Access-Tripwire) using a custom JSON Event Pattern. The rule monitors CloudTrail events specifically for public bucket modifications (PutBucketPublicAccessBlock, DeletePublicAccessBlock, PutBucketAcl, and PutBucketPolicy) and routes matching events directly to the remediation Lambda function.
+
+Event Pattern JSON:
+
+{
+  "source": ["aws.s3"],
+  "detail-type": ["AWS API Call via CloudTrail"],
+  "detail": {
+    "eventSource": ["s3.amazonaws.com"],
+    "eventName": [
+      "PutBucketPublicAccessBlock",
+      "DeletePublicAccessBlock",
+      "PutBucketAcl",
+      "PutBucketPolicy"
+    ]
+  }
+}
+
+
+
+Proof of Configuration:
+
+Fig 5: 
+
+Fig 6:
